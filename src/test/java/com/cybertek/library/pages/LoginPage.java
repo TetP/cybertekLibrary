@@ -21,10 +21,6 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-lg btn-primary btn-block']")
     private WebElement loginBtn;
 
-    @FindBy(id = "user_count")
-    private WebElement usersNumber;
-
-
     public void login(String email, String password){
         BrowserUtils.enterText(emailInput,email);
         BrowserUtils.enterText(passwordInput,password);
@@ -61,16 +57,9 @@ public class LoginPage extends BasePage {
         loginBtn.click();
     }
 
-    public Integer getUsersNumber() {
-        BrowserUtils.waitForElement(usersNumber);
-        return Integer.parseInt(usersNumber.getText());
-    }
 
-    public Integer getCount(String name){
-        WebElement element=Driver.getDriver().findElement(By.xpath("//h6[text()='"+name+"']//../h2"));
-        BrowserUtils.waitForElement(element);
-        return Integer.parseInt(element.getText());
-    }
+
+
 
 
 

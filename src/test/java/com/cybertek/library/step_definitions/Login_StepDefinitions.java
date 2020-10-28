@@ -9,9 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Login_StepDefinitions {
-
-    LoginPage loginPage=new LoginPage();
+public class Login_StepDefinitions extends BaseStepDef{
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
@@ -45,7 +43,7 @@ public class Login_StepDefinitions {
 
     @Then("there should be {int} users")
     public void there_should_be_users(Integer noOfUsers) {
-        Assert.assertEquals(noOfUsers,loginPage.getUsersNumber());
+        Assert.assertEquals(noOfUsers,dashboardPage.getUsersNumber());
     }
 
     @When("I login using {string} and {string}")
@@ -55,9 +53,13 @@ public class Login_StepDefinitions {
 
     @Then("there should be {int} {string}")
     public void there_should_be(Integer num, String name) {
-        Assert.assertEquals(num,loginPage.getCount(name));
+        Assert.assertEquals(num,dashboardPage.getCount(name));
     }
 
+    @Then("account holder name should be {string}")
+    public void account_holder_name_should_be(String name) {
+        Assert.assertEquals(name,dashboardPage.verifyName(name));
+    }
 
 
 }
